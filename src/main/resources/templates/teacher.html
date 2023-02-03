@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Profil Nauczyciela</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}"/>
+
+  <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+  <script th:src="@{/webjars/bootrstrap/5.2.3/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="container">
+
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Imie</th>
+      <th scope="col">Nazwisko</th>
+      <th scope="col">Email</th>
+      <th scope="col">Przedmioty prowadzone</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row"></th>
+      <td th:text="${teacher.getName()}"></td>
+      <td th:text="${teacher.getSurname()}"></td>
+      <td th:text="${teacher.getEmail()}"></td>
+<td>
+    <ul th:each="course : ${allCourses}">
+      <li th:text="${course.getCourseName() != null} ? ${course.getCourseName()} : 'Nie zatrudniony'"></li>
+<a>_____________________________________</a>
+    </ul>
+</td>
+      <td><a th:href="${'/teacher/edit?id='+teacher.id}">Edytuj</a></td>
+    </tr>
+    </tbody>
+  </table>
+  <a  class="btn btn-light" data-mdb-ripple-color="dark" href="/teachers">Powrot</a>
+</div>
+</body>
+</html>

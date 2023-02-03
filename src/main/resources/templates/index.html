@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Strona Glowna</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+  <script th:src="@{/webjars/bootrstrap/5.2.3/js/bootstrap.min.js}"></script>
+</head>
+
+<style>
+  * {box-sizing: border-box}
+
+  body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial;
+  }
+
+  .tablink {
+    background-color: #555;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 25%;
+  }
+
+  .tablink:hover {
+    background-color: #777;
+  }
+
+  .tabcontent {
+    color: white;
+    display: none;
+    padding: 100px 20px;
+    height: 100%;
+  }
+
+  #Home {background-color: red;}
+  #News {background-color: white;}
+  #Contact {background-color: black;}
+  #About {background-color: orange;}
+</style>
+</head>
+<body>
+
+<button class="tablink" onclick="openPage('Home', this, 'red')">Home</button>
+<button class="tablink" onclick="openPage('News', this, 'white')" id="defaultOpen">Student</button>
+<button class="tablink" onclick="openPage('Contact', this, 'black')">Przedmioty</button>
+<button class="tablink" onclick="openPage('About', this, 'orange')">Nauczyciele</button>
+
+
+<div id="Home" class="tabcontent">
+  <h3>Home</h3>
+  <p>Home is where the heart is..</p>
+</div>
+
+<div id="News" class="tabcontent">
+  <h3 style="color: black">Student</h3>
+  <a href="/students" style="color: darkcyan">Zobacz liste studentow.</a>
+</div>
+
+<div id="Contact" class="tabcontent">
+  <h3 style="color: white">Przedmioty</h3>
+  <a href="/courses" style="color: aquamarine">Zobacz liste przedmiotow.</a>
+</div>
+<div id="About" class="tabcontent">
+  <h3 style="color:black">Nauczyciele</h3>
+  <a href="/teachers" style="color: aquamarine">Zobacz liste nauczycieli.</a>
+</div>
+
+
+
+<script>
+  function openPage(pageName,elmnt,color) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].style.backgroundColor = "";
+    }
+    document.getElementById(pageName).style.display = "block";
+    elmnt.style.backgroundColor = color;
+  }
+
+  // Get the element with id="defaultOpen" and click on it
+  document.getElementById("defaultOpen").click();
+</script>
+</body>
+</html>
+
+

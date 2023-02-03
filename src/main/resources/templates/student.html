@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Profil studenta</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}"/>
+
+  <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+  <script th:src="@{/webjars/bootrstrap/5.2.3/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="container">
+
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Imie</th>
+      <th scope="col">Nazwisko</th>
+      <th scope="col">Wiek</th>
+      <th scope="col">Indeks</th>
+      <th scope="col">Kurs</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row"></th>
+      <td th:text="${student.getName()}"></td>
+      <td th:text="${student.getSurname()}"></td>
+      <td th:text="${student.getAge()}"></td>
+      <td th:text="${student.getIndeks()}"></td>
+      <td th:text="${student.getCourseName()}"></td>
+      <td><a th:href="${'/student/edit?id='+student.id}">Edytuj</a></td>
+    </tr>
+    </tbody>
+  </table>
+  <a  class="btn btn-light" data-mdb-ripple-color="dark" href="/students">Powrot</a>
+</div>
+</body>
+</html>

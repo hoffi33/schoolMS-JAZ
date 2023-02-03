@@ -1,0 +1,53 @@
+<!----       $ - obiekt/model ktory odbieramy
+      @ - wskazujemy na adres
+      * - wskazujemy na pole, do ktorego chcemy przypisac input
+       ----->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Dodaj nowego studenta</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}"/>
+
+  <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+  <script th:src="@{/webjars/bootrstrap/5.2.3/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="container">
+  <form class="form-horizontal" th:object="${newStudent}" th:action="@{/students}" th:method="post"/>
+<div class="form-group">
+  <label class="control-label">Imie:</label>
+    <input type="text" class="form-control" minlength="2" maxlength="40" th:field="*{newStudent.name}">
+</div>
+    <div class="form-group">
+      <label class="control-label">Nazwisko:</label>
+      <input type="text" class="form-control" th:field="*{newStudent.surname}"/>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Indeks:</label>
+      <input type="text" class="form-control" th:field="*{newStudent.indeks}"/>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Wiek:</label>
+      <input type="text" class="form-control" th:field="*{newStudent.age}"/>
+    </div>
+    <label class="control-label">Kurs:</label>
+    <select name="course" id="course" class="form-control">
+        <option th:each="course : ${allCourses}"
+        th:value="${course.id}"
+        th:text="${course.courseName}"
+        th:field="*{newStudent.course}">
+        </option>
+
+    </select>
+    <label class="control-label"></label>
+    <div class="row">
+        <button type="submit" class="btn btn-dark">Dodaj Studenta</button>
+    </div>
+  </form>
+
+</div>
+</body>
+</html>

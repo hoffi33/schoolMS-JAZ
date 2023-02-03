@@ -1,0 +1,41 @@
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Dodaj nowy kurs</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}"/>
+
+  <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+  <script th:src="@{/webjars/bootrstrap/5.2.3/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="container">
+  <form class="form-horizontal" th:object="${newCourse}" th:action="@{/courses}" th:method="post"/>
+<div class="form-group">
+  <label class="control-label">Nazwa:</label>
+    <input type="text" class="form-control" minlength="2" maxlength="40" th:field="*{newCourse.courseName}">
+</div>
+    <div class="form-group">
+      <label class="control-label">Liczba ECTS:</label>
+      <input type="text" class="form-control" th:field="*{newCourse.ectsPoints}"/>
+    </div>
+    <label class="control-label">Nauczyciel:</label>
+    <select name="teacher" id="teacher" class="form-control">
+        <option th:each="teacher : ${allTeachers}"
+                th:value="${teacher.id}"
+                th:text="${teacher.name}"
+                th:field="*{newCourse.teacher}">
+        </option>
+    </select>
+    <label></label>
+    <div class="row">
+        <button type="submit" class="btn btn-dark">Dodaj Kurs</button>
+    </div>
+  </form>
+
+</div>
+</body>
+</html>
